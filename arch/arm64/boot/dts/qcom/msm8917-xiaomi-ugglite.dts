@@ -1,0 +1,49 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Copyright (c) 2021, Avishek Sen <x0rzavi@gmail.com>
+ */
+
+/dts-v1/;
+
+#include "msm8917.dtsi"
+
+/ {
+	model = "Xiaomi Redmi Note 5A Lite";
+	compatible = "xiaomi,ugglite", "qcom,msm8917";
+
+	/* required for bootloader to select correct board */
+    qcom,board-id= <8 0>;
+	qcom,pmic-id = <0x10019 0x0 0x0 0x0>;
+
+	aliases {
+	};
+
+	chosen {
+		bootargs = "earlycon=tty0 console=tty0 clk_ignore_unused pd_ignore_unused";
+
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		stdout-path = "framebuffer0";
+
+		framebuffer0: framebuffer@90000000 {
+			compatible = "simple-framebuffer";
+			reg = <0x0 0x90000000 0x0 0x1400000>;
+			width = <720>;
+			height = <1280>;
+			stride = <(720 * 3)>;
+			format = "r8g8b8";
+			status= "okay";
+		};
+	};
+
+	reserved-memory {
+		ramoops@b0000000 {
+			compatible = "ramoops";
+			reg = <0 0xb0000000 0 0x400000>;
+			record-size = <0x200000>;
+			console-size = <0x200000>;
+		};
+	};
+};
