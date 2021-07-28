@@ -27,9 +27,9 @@
 
 		stdout-path = "framebuffer0";
 
-		framebuffer0: framebuffer@90000000 {
+		framebuffer0: framebuffer@90001000 {
 			compatible = "simple-framebuffer";
-			reg = <0x0 0x90000000 0x0 0x1400000>;
+			reg = <0 (0x90001000) 0 (720*1280*3)>;
 			width = <720>;
 			height = <1280>;
 			stride = <(720 * 3)>;
