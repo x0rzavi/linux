@@ -4,6 +4,9 @@
  */
 
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/clock/qcom,gcc-msm8917.h>
+#include <dt-bindings/reset/qcom,gcc-msm8917.h>
+
 
 / {
 	model = "Qualcomm Technologies, Inc. MSM8917";
@@ -259,11 +262,34 @@
 			#hwlock-cells = <1>;
 		};
 
+		gcc: clock-controller@1800000 {
+			compatible = "qcom,gcc-msm8917";
+			#clock-cells = <1>;
+			#reset-cells = <1>;
+			#power-domain-cells = <1>;
+			reg = <0x01800000 0x80000>;
+		};
+
 		intc: interrupt-controller@b000000 {
 			compatible = "qcom,msm-qgic2";
 			interrupt-controller;
 			#interrupt-cells = <3>;
 			reg = <0x0b000000 0x1000>, <0x0b002000 0x1000>;
+		};
+
+		apcs: mailbox@b011000 {
+			compatible = "qcom,msm8916-apcs-kpss-global", "syscon";
+			reg = <0x0b011000 0x1000>;
+			#mbox-cells = <1>;
+			clocks = <&a53pll>, <&gcc GPLL0_VOTE>;
+			clock-names = "pll", "aux";
+			#clock-cells = <0>;
+		};
+
+		a53pll: clock@b016000 {
+			compatible = "qcom,msm8916-a53pll";
+			reg = <0x0b016000 0x40>;
+			#clock-cells = <0>;
 		};
 
 		timer@b120000 {
