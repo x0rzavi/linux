@@ -232,16 +232,16 @@
 			qcom,smd-edge = <15>;
 
 			rpm_requests: rpm-requests {
-				compatible = "qcom,rpm-msm8916";
+				compatible = "qcom,rpm-msm8917";
 				qcom,smd-channels = "rpm_requests";
 
 				rpmcc: clock-controller {
-					compatible = "qcom,rpmcc-msm8916";
+					compatible = "qcom,rpmcc-msm8917";
 					#clock-cells = <1>;
 				};
 
 				rpmpd: power-controller {
-					compatible = "qcom,msm8916-rpmpd";
+					compatible = "qcom,msm8917-rpmpd";
 					#power-domain-cells = <1>;
 					operating-points-v2 = <&rpmpd_opp_table>;
 
@@ -328,7 +328,7 @@
 		};
 
 		apcs: mailbox@b011000 {
-			compatible = "qcom,msm8916-apcs-kpss-global", "syscon";
+			compatible = "qcom,msm8917-apcs-kpss-global", "syscon";
 			reg = <0x0b011000 0x1000>;
 			#mbox-cells = <1>;
 			clocks = <&a53pll>, <&gcc GPLL0_VOTE>;

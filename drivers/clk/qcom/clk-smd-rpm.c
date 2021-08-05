@@ -943,7 +943,7 @@ static struct clk_smd_rpm *msm8917_clks[] = {
 	[RPM_SMD_BB_CLK2_PIN] = &msm8916_bb_clk2_pin,
 	[RPM_SMD_BB_CLK2_A_PIN]	= &msm8916_bb_clk2_a_pin,
 	[RPM_SMD_DIV_CLK2] = &msm8974_div_clk2,
-	[RPM_SMD_DIV_A_CLK2] = &msm8974_div_clk2_a,
+	[RPM_SMD_DIV_A_CLK2] = &msm8974_div_a_clk2,
 };
 
 static const struct rpm_smd_clk_desc rpm_clk_msm8917 = {
